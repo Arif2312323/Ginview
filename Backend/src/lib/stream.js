@@ -12,6 +12,11 @@ if (!apiKey || !apiSecret) {
 export const chatClient = StreamChat.getInstance(apiKey, apiSecret); // will be used chat features
 export const streamClient = new StreamClient(apiKey, apiSecret); // will be used for video calls
 
+if(!chatClient)
+{
+    console.error("Chatclient not found");
+}
+
 export const upsertStreamUser = async (userData) => {
   try {
     await chatClient.upsertUser(userData);
